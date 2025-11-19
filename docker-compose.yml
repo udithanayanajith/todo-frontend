@@ -1,0 +1,8 @@
+version: "3.9" # optional, can remove if Docker Compose warns
+
+services:
+  frontend:
+    build: .
+    container_name: todo-frontend
+    ports:
+      - "80:80"

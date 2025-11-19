@@ -1,0 +1,191 @@
+/* Import a clean sans-serif */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+
+:root {
+  --bg-1: #0f172a;
+  --bg-2: #0b1220;
+  --card-bg: rgba(255, 255, 255, 0.97);
+  --muted: #6b7280;
+  --accent: #6366f1; /* indigo-500 */
+  --danger: #ef4444;
+  --radius: 14px;
+}
+
+/* Base */
+html,
+body,
+#root {
+  height: 100%;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #0f172a;
+}
+
+/* Page container: fills viewport and centers content */
+.app-viewport {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+}
+
+/* Card: centered application surface */
+.app-card {
+  width: min(980px, 96%);
+  height: min(780px, 92vh); /* keeps page from needing scroll */
+  max-height: calc(100vh - 56px);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.98),
+    var(--card-bg)
+  );
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgba(2, 6, 23, 0.06);
+}
+
+/* Header */
+.app-header {
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+}
+.app-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.app-title h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  color: #0b1220;
+  font-weight: 600;
+}
+.app-sub {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Body: tasks list area (scrollable) */
+.app-body {
+  display: flex;
+  flex-direction: column;
+  padding: 18px 22px;
+  gap: 16px;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+.todo-list {
+  flex: 1 1 auto;
+  overflow: auto;
+  padding-right: 8px; /* nice spacing for scrollbar */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Individual task */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.01));
+  border: 1px solid rgba(11, 18, 32, 0.04);
+}
+.todo-item .title {
+  flex: 1 1 auto;
+  font-weight: 500;
+  color: #07102b;
+}
+.todo-item .meta {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* Footer / Add form */
+.app-footer {
+  padding: 16px 22px;
+  border-top: 1px solid rgba(15, 23, 42, 0.04);
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.input {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.input input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(11, 18, 32, 0.06);
+  background: transparent;
+  outline: none;
+  font-size: 0.98rem;
+}
+.btn {
+  background: linear-gradient(180deg, var(--accent), #4f46e5);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.18);
+}
+.btn.ghost {
+  background: transparent;
+  color: var(--accent);
+  box-shadow: none;
+  border: 1px solid rgba(99, 102, 241, 0.14);
+}
+
+/* Scrollbar styling for modern browsers */
+.todo-list::-webkit-scrollbar {
+  width: 10px;
+}
+.todo-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(15, 23, 42, 0.12),
+    rgba(15, 23, 42, 0.08)
+  );
+  border-radius: 10px;
+}
+@media (max-width: 520px) {
+  .app-card {
+    height: 94vh;
+    border-radius: 12px;
+    padding: 0;
+  }
+  .app-header {
+    padding: 14px;
+  }
+  .app-body {
+    padding: 12px;
+  }
+  .app-footer {
+    padding: 12px;
+  }
+}
