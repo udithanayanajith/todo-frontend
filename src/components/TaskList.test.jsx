@@ -16,13 +16,3 @@ test('displays tasks correctly', () => {
     expect(screen.getByText('Test Task 2')).toBeInTheDocument();
 });
 
-
-
-
-
-
-
-
-
-
-
